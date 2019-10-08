@@ -1,21 +1,10 @@
 import pytest
 import yt
 
-data_objects = [
-    ('small_sphere', ('sphere', ('c', (0.1, 'unitary')))),
-    ('bigger_sphere', ('sphere', ('c', (0.25, 'unitary')))),
-]
-
-datasets = ['IsolatedGalaxy/galaxy0030/galaxy0030']
-
-def test_count_particles(json_metadata, ds, dobj_type, dobj_args):
-    ds = yt.load(ds)
-    json_metadata['yt_test_result'] = {}
+def test_count_particles(json_metadata, ds_info, dobj_type, dobj_args):
+    ds = yt.load(ds_info['filename'])
+    dobj = getattr(ds, dobj_type)(*tuple(dobj_args))
+    json_metadata['yt_test_result'] = {_: dobj[_, "particle_ones"].shape
+                                       for _ in ds_info['particle_types']}
     json_metadata['yt_test_name'] = "{}_{}".format(str(ds), dobj_type, dobj_args)
     return True
-
-
-#@pytest.mark.parametrize("ds", datasets)
-#@pytest.mark.parametrize("dobj_name,dobj_def", data_objects)
-
-

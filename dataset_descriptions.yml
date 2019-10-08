@@ -2,18 +2,17 @@ datasets:
   - filename: IsolatedGalaxy/galaxy0030/galaxy0030
     name: galaxy0030
     particle_types:
-      - all
-  - filename: snapshot_033/snap_033.0.hdf5
-    name: snapshot_033
-    particle_types:
-      - all
       - PartType0
       - PartType1
       - PartType4
 data_objects:
   - name: small_sphere
     type: sphere
-    arguments: ['c', [0.1, 'unitary']]
+    arguments:
+       - 'c'
+       - (0.1, 'unitary')
   - name: big_sphere
     type: sphere
-    arguments: ['c', [0.25, 'unitary']]
+    arguments:
+       - 'c'
+       - (0.25, 'unitary')
