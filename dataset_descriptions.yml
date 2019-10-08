@@ -2,6 +2,10 @@ datasets:
   - filename: IsolatedGalaxy/galaxy0030/galaxy0030
     name: galaxy0030
     particle_types:
+      - all
+  - filename: snapshot_033/snap_033.0.hdf5
+    name: snapshot_033
+    particle_types:
       - PartType0
       - PartType1
       - PartType4
